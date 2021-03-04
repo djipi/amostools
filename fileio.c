@@ -3,6 +3,10 @@
 #include <stdlib.h>
 #include <sys/stat.h>
 
+#ifndef S_ISDIR
+#define S_ISDIR(mode)  (((mode) & S_IFMT) == S_IFDIR)
+#endif
+
 /* reads a binary file into memory */
 void *read_file(char *name, size_t *length) {
     void *mem = NULL;

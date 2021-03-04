@@ -1,3 +1,5 @@
-dumpamos
-listamos
-unlockamos
+*.user
+.vs/
+x64/
+Win32/
+test.bat

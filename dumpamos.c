@@ -1,10 +1,19 @@
 /* dumpamos: extracts AMOS source files and AMOS bank files */
 #include "fileio.c"
 #include <string.h>
+#if !defined(WIN32) && !defined(WIN64)
 #include <strings.h>
+#endif
 #include <stdarg.h>
 #include <ctype.h>
 #include <stdint.h>
+
+#ifndef strcasecmp
+#define strcasecmp _stricmp
+#endif
+#ifndef S_ISDIR
+#define S_ISDIR(mode)  (((mode) & S_IFMT) == S_IFDIR)
+#endif
 
 /* read 16-bit big-endian word from uint8_t[] */
 #define amos_deek(a) ((((a)[0])<<8)|((a)[1]))
@@ -534,6 +543,7 @@ void amos_file(char *fname, uint8_t *src, size_t len) {
 int main(int argc, char *argv[]) {
     if (argc <= 1) {
         printf("Usage: %s [-p] <file.AMOS, file.abk, file.abs, ...>\n", argv[0]);
+        printf("-p : Prefix removal\n");
         return 1;
     }
 

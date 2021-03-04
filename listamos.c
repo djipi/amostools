@@ -2,10 +2,16 @@
 #include <sys/types.h>
 #include <dirent.h>
 #include <string.h>
+#if !defined(WIN32) && !defined(WIN64)
 #include <strings.h>
+#endif
 #include <stdint.h>
 #include "fileio.c"
 #include "amoslib.c"
+
+#ifndef strcasecmp
+#define strcasecmp _stricmp
+#endif
 
 struct AMOS_token *table[AMOS_TOKEN_TABLE_SIZE] = { NULL };
 char extensions_loaded[AMOS_EXTENSION_SLOTS + 1] = { 0 };
