@@ -1,8 +1,17 @@
 amostools - tools to work with AMOS programs
 
+Presentation
+============
+
 * dumpamos: extract the contents of AMOS source code and memory banks
 * listamos: list AMOS source code as plain text
 * unlockamos: unlock "locked" procedures in AMOS source code
+
+Platforms
+=========
+
+* Linux
+* Windows 32 & 64 bits
 
 Usage
 =====
